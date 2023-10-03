@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+</head>
+<body>
+    <div id="container">
+        <div id="content-wrapper">
+            <div id="content-2">
+                <div class="content-2-1">
+                    <img class="image" id="image-1" src="{{ url_for('static', filename='assets/timoty.jpg') }}" alt="">
+                    <div class="description">
+                        <h2>Timothy Harminto</h2>
+                        <div class="description-text">
+                            Timothy is a Software Engineering student at Binus Bekasi University. He has an interest in computers and programming. He is quite proficient in C, C++, JavaScript, Python, Java, and many more. For now the special focus is AI programming.                        
+                        </div>
+                    </div>
+                    <!-- <div class="text"></div> -->
+                </div>
+                <div class="content-2-1">
+                    <img class="image" id="image-2" src="{{ url_for('static', filename='assets/viola.jpg') }}" alt="">
+                    <div class="description">
+                        <h2>Viola Yennalis Chandra</h2>
+                        <div class="description-text">
+                            Viola is a Software Engineering student at Binus Bekasi University. He has an interest in computers and programming. He is quite proficient in C, C++, JavaScript, Python, Java, and many more. For now the special focus is AI programming.                        
+                        </div>
+                    </div>
+                    <!-- <div class="text" id="text-list"></div> -->
+                </div>
+                <div class="content-2-1"  id="adya">
+                    <img class="image" id="image-3" src="{{ url_for('static', filename='assets/adya.jpg') }}" alt="">
+                    <div class="description">
+                        <h2>Adya Muhammad Prawira</h2>
+                        <div class="description-text">
+                            Adya is a Software Engineering student at Binus Bekasi University. He has an interest in computers and programming. He is quite proficient in C, C++, JavaScript, Python, Java, and many more. For now the special focus is AI programming.                        
+                        </div>
+                    </div>
+                    <!-- <div class="text"></div> -->
+                </div>                
+            </div>         
+            <div id="footer-bar">
+                <div>
+                    Copyright © 2023 Research and Development Team (RnD/RDT).
+                    <br>
+                    CodePlot by CodePlay
+                </div>
+            </div>
+        </div>
+        <div id="navigation-bar">
+            <div id="logo">
+                <img src="../static/assets/python2.png" alt="">
+                <p>CodePlot</p>
+            </div>
+            <div id="menu">
+                <div id="home-button" class="menu-button">
+                    <div>Home</div>
+                </div>
+                <div id="about-us-button" class="menu-button">
+                    <div>About Us</div>
+                </div>
+            </div>         
+        </div>
+    </div>
+    <script src="../static/js/about.js"></script>
+</body>
+</html>

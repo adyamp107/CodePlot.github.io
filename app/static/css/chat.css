@@ -1,0 +1,515 @@
+*, body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    user-select: none;
+    overflow: hidden;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    color: rgb(255, 255, 255);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(200, 200, 200);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(200, 200, 200);
+}
+
+#container{
+    width: 100vw;
+    height: 100vh;
+}
+
+.popup {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(20, 20, 20);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+:root{
+    --color-background-content-bar-light: rgb(255, 255, 255);
+    --color-background-side-bar-light: rgb(71, 111, 255);
+    --color-background-chat-bar-light: rgb(210, 210, 210);
+    --color-background-navigation-bar-light: rgb(71, 111, 255);
+
+    --color-background-search-input-light: rgb(255, 255, 255);
+    --color-background-textarea-chat-light: rgb(255, 255, 255);
+
+    --color-background-button-light: rgb(255, 255, 255);
+
+    --color-background-text-line-light: rgb(200, 200, 200);
+
+    --color-background-border-light: rgb(255, 255, 255);
+
+    --color-background-clear-button-hover-light: rgb(174, 192, 255);
+    
+    --color-background-clear-button-active-light: rgb(129, 156, 255);
+}
+
+@media screen and (min-width: 750px) {
+    :root{
+        --width-side-bar: 300px;
+        --height-chat-bar: 100px;
+        --height-navigation-bar: 40px;
+
+        --height-side-top-bar: 50px;
+        --height-side-bottom-bar: 50px;
+    }
+
+/* ============================================================================== */
+
+    #side-bar{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: var(--width-side-bar);
+        height: 100%;
+        background-color: var(--color-background-side-bar-light);
+    }
+
+    #side-top-bar{
+        width: 100%;
+        height: var(--height-side-top-bar);
+        border-right: 1px solid var(--color-background-border-light);
+        padding: 10px 0px;
+        display: flex;
+        justify-content: center;
+    }
+
+    #add-button{
+        margin-left: 7px;
+    }
+
+    #back-button{
+        margin-right: 7px;
+    }
+    
+    #search-input {
+        outline: none;
+        border: none;
+        height: 100%;
+        width: 150px;
+        padding: 0px 0px 0px 10px;
+        border-radius: 5px 0px 0px 5px;    
+        background-color: var(--color-background-search-input-light);
+        line-height: 30px;
+        color: rgb(0, 0, 0);
+    }
+
+    #svg-search{
+        transform: rotate(-45deg);
+    }
+
+    #search-button{
+        background-color: var(--color-background-button-light);
+        border-radius: 0px 5px 5px 0px;
+        padding-left: 0px;
+    }
+
+    #clear-text-button{
+        background-color: var(--color-background-button-light);
+        border: none;
+        padding-right: 0px;
+    }
+
+    .side-top-button{
+        padding: 3px;
+        cursor: pointer;
+    }
+
+    #side-middle-bar{
+        width: 100%;
+        height: calc(100% - var(--height-side-top-bar) - var(--height-side-bottom-bar));
+        border-right: 1px solid var(--color-background-border-light);
+        border-top: 1px solid var(--color-background-border-light);
+        border-bottom: 1px solid var(--color-background-border-light);
+        padding: 5px 0;
+        overflow-y: auto;
+    }
+
+    #side-bottom-bar{
+        width: 100%;
+        height: var(--height-side-bottom-bar);
+        border-right: 1px solid var(--color-background-border-light);
+        display: flex;
+        padding: 10px;
+        justify-content: space-between;
+        align-items: center;        
+    }
+
+    #help-button{
+        width: 30px;
+        height: 100%;
+        cursor: pointer;
+    }
+
+    #clear-button{
+        border: 2px solid var(--color-background-border-light);
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #clear-button:hover{
+        background-color: var(--color-background-clear-button-hover-light);
+    }
+
+    #clear-button:active{
+        background-color: var(--color-background-clear-button-active-light);
+    }
+
+/* ============================================================================== */
+
+    #content-bar{
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: calc(100% - var(--width-side-bar));
+        height: calc(100% - var(--height-chat-bar));
+        background-color: var(--color-background-content-bar-light);
+    }
+
+    #content-bar-wrapper{
+        background-color: transparent;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+    }
+
+/* ============================================================================== */
+
+    #chat-bar{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: calc(100% - var(--width-side-bar));
+        height: var(--height-chat-bar);
+        background-color: var(--color-background-chat-bar-light);
+        border-top: 1px solid var(--color-background-border-light);   
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 15px;
+    }
+
+    #textarea-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: end;
+        width: 100%;
+        height: 44px;
+    }
+
+    #textarea-padding{
+        width: 70%;
+        height: 100%;
+        resize: none;
+        outline: none;
+        border: none;
+        border-radius: 5px;    
+        background-color: var(--color-background-textarea-chat-light);
+    }
+
+    #textarea-chat{
+        height: 24px;
+        line-height: 24px;
+        width: calc(100% - 20px);
+        resize: none;
+        outline: none;
+        border: none;
+        background-color: var(--color-background-textarea-chat-light);
+        overflow-y: hidden;
+        margin: 10px;
+        color: rgb(0, 0, 0);
+    }
+
+    #send-button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10px;
+        margin-bottom: 2px;
+        width: 40px;
+        height: 40px;
+        background-color: rgb(71, 111, 255);
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    /* #textarea-chat::placeholder{
+        position: absolute;
+        top: 5px;
+    } */
+
+/* ============================================================================== */
+
+    #navigation-bar{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: var(--height-navigation-bar);
+        display: none;
+    }
+
+/* ============================================================================== */
+}
+
+@media screen and (max-width: 750px) {
+    :root{
+        --width-side-bar: 300px;
+        --height-chat-bar: 100px;
+        --height-navigation-bar: 40px;
+
+        --height-side-top-bar: 50px;
+        --height-side-bottom-bar: 50px;
+    }
+
+/* ============================================================================== */
+
+    #side-bar{
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: var(--width-side-bar);
+        height: 100%;
+        background-color: var(--color-background-side-bar-light);
+        transition: left 0.3s ease-in-out;
+    }
+
+    #side-top-bar{
+        width: 100%;
+        height: var(--height-side-top-bar);
+        border-right: 1px solid var(--color-background-border-light);
+        padding: 10px 0px;
+        display: flex;
+        justify-content: center;
+    }
+
+    #add-button{
+        margin-left: 7px;
+    }
+
+    #back-button{
+        margin-right: 7px;
+    }
+    
+    #search-input {
+        outline: none;
+        border: none;
+        height: 100%;
+        width: 150px;
+        padding: 0px 0px 0px 10px;
+        border-radius: 5px 0px 0px 5px;    
+        background-color: var(--color-background-search-input-light);
+        line-height: 30px;
+        color: rgb(0, 0, 0);
+    }
+
+    #svg-search{
+        transform: rotate(-45deg);
+    }
+
+    #search-button{
+        background-color: var(--color-background-button-light);
+        border-radius: 0px 5px 5px 0px;
+        padding-left: 0px;
+    }
+
+    #clear-text-button{
+        background-color: var(--color-background-button-light);
+        border: none;
+        padding-right: 0px;
+    }
+
+    .side-top-button{
+        padding: 3px;
+        cursor: pointer;
+    }
+
+    #side-middle-bar{
+        width: 100%;
+        height: calc(100% - var(--height-side-top-bar) - var(--height-side-bottom-bar));
+        border-right: 1px solid var(--color-background-border-light);
+        border-top: 1px solid var(--color-background-border-light);
+        border-bottom: 1px solid var(--color-background-border-light);
+        padding: 5px 0;
+        overflow-y: auto;
+    }
+
+    #side-bottom-bar{
+        width: 100%;
+        height: var(--height-side-bottom-bar);
+        border-right: 1px solid var(--color-background-border-light);
+        display: flex;
+        padding: 10px;
+        justify-content: space-between;
+        align-items: center;        
+    }
+
+    #help-button{
+        width: 30px;
+        height: 100%;
+        cursor: pointer;
+    }
+
+    #clear-button{
+        border: 2px solid var(--color-background-border-light);
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #clear-button:hover{
+        background-color: var(--color-background-clear-button-hover-light);
+    }
+
+    #clear-button:active{
+        background-color: var(--color-background-clear-button-active-light);
+    }
+
+/* ============================================================================== */
+
+    #content-bar{
+        position: absolute;
+        right: 0;
+        top: var(--height-navigation-bar);
+        width: 100%;
+        height: calc(100% - var(--height-chat-bar) - var(--height-navigation-bar));
+        background-color: var(--color-background-content-bar-light);
+    }
+
+    #content-bar-wrapper{
+        background-color: transparent;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+    }
+
+/* ============================================================================== */
+
+    #chat-bar{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: var(--height-chat-bar);
+        background-color: var(--color-background-chat-bar-light);
+        border-top: 1px solid var(--color-background-border-light);       
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 15px;
+    }
+
+    #textarea-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: end;
+        width: 100%;
+        height: 44px;
+    }
+
+    #textarea-padding{
+        width: 70%;
+        height: 100%;
+        resize: none;
+        outline: none;
+        border: none;
+        border-radius: 5px;    
+        background-color: var(--color-background-textarea-chat-light);
+    }
+
+    #textarea-chat{
+        height: 24px;
+        line-height: 24px;
+        width: calc(100% - 20px);
+        resize: none;
+        outline: none;
+        border: none;
+        background-color: var(--color-background-textarea-chat-light);
+        overflow-y: hidden;
+        margin: 10px;
+        color: rgb(0, 0, 0);
+    }
+
+    #send-button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10px;
+        margin-bottom: 2px;
+        width: 40px;
+        height: 40px;
+        background-color: rgb(71, 111, 255);
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    /* #textarea-chat::placeholder{
+        position: absolute;
+        top: 5px;
+    } */
+
+/* ============================================================================== */
+
+    #navigation-bar{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: var(--height-navigation-bar);
+        background-color: var(--color-background-navigation-bar-light);
+        border-bottom: 1px solid var(--color-background-border-light);
+        display: flex;
+        padding: 0px 20px 0px 20px;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #hamburger-button{
+        width: 30px;
+        height: 30px;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    #another-back-button{
+        width: 30px;
+        height: 30px;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    #cancel-button{
+        width: 30px;
+        height: 30px;
+        background-color: transparent;
+        position: absolute;
+        top: 10px;
+        left: -100%;
+        border: 2px solid white;
+        border-radius: 5px;
+        transition: left 0.3s ease-in-out;
+        cursor: pointer;
+    }
+
+    #cancel-button svg{
+        transform: rotate(-45deg);
+    }
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+</head>
+<body>
+    <div id="container">
+        <div id="content-bar" class="content">
+            <div id="content-bar-wrapper"></div>
+        </div>
+    
+        <div id="chat-bar" class="content">
+            <div id="textarea-wrapper">
+                <div id="textarea-padding">
+                    <textarea id="textarea-chat" rows="1" placeholder="Type command"></textarea>
+                </div>
+                <div id="send-button" title="Send Command">
+                    <svg width="30px" height="30px" viewBox="0 0 200 200" stroke="white" stroke-width="7">
+                        <line x1="170" y1="100" x2="30" y2="40"></line>
+                        <line x1="50" y1="100" x2="30" y2="40"></line>                
+                        <line x1="50" y1="100" x2="170" y2="100"></line>
+                        <line x1="50" y1="100" x2="30" y2="160"></line>
+                        <line x1="170" y1="100" x2="30" y2="160"></line>
+                    </svg>
+                </div>
+            </div>
+    
+    
+            <!-- <div>Attention: this program may generate inaccurate python code, please support us for the development of this program</div> -->
+        </div>
+    
+        <div id="navigation-bar" class="content">
+            <div id="hamburger-button" title="History Menu">
+                <svg width="100%" height="100%" viewBox="0 0 200 200" stroke="white" stroke-width="10">
+                    <line x1="30" y1="50" x2="170" y2="50"></line>
+                    <line x1="30" y1="100" x2="170" y2="100"></line>
+                    <line x1="30" y1="150" x2="170" y2="150"></line>
+    
+                </svg>
+            </div>
+            <div>CodePlay1.0</div>
+            <div id="another-back-button" title="Back">
+                <svg width="100%" height="100%" viewBox="0 0 200 200" stroke="white" stroke-width="10">
+                    <line x1="30" y1="100" x2="85" y2="50"></line>
+                    <line x1="30" y1="100" x2="170" y2="100"></line>
+                    <line x1="30" y1="100" x2="85" y2="150"></line>
+                </svg>
+            </div>
+        </div>
+    
+        <div id="side-bar">
+            <div id="side-top-bar">
+                <div class="side-top-button" id="back-button" title="Back">
+                    <svg width="100%" height="100%" viewBox="0 0 200 200" stroke="white" stroke-width="10">
+                        <line x1="30" y1="100" x2="85" y2="50"></line>
+                        <line x1="30" y1="100" x2="170" y2="100"></line>
+                        <line x1="30" y1="100" x2="85" y2="150"></line>
+                    </svg>
+                </div>
+                <input type="text" id="search-input" placeholder="Search">                
+    
+                <div class="side-top-button" id="clear-text-button" title="Clear Text">
+                    <svg id="svg-search" width="100%" height="100%" viewBox="0 0 200 200" fill="none" stroke="#666" stroke-width="10">
+                        <line x1="50" y1="100" x2="150" y2="100"></line>
+                        <line x1="100" y1="50" x2="100" y2="150"></line>
+                    </svg>
+                </div>
+    
+                <div class="side-top-button" id="search-button" title="Search Chat">
+                    <svg id="svg-search" width="100%" height="100%" viewBox="0 0 200 200" fill="none" stroke="#666" stroke-width="10">
+                        <circle cx="100" cy="80" r="50"></circle>
+                        <line x1="100" y1="130" x2="100" y2="180"></line>
+                    </svg>
+                </div>
+                <div class="side-top-button" id="add-button" title="Add New Chat">
+                    <svg width="100%" height="100%" viewBox="0 0 200 200" fill="none" stroke="white" stroke-width="10">
+                        <line x1="30" y1="100" x2="170" y2="100"></line>
+                        <line x1="100" y1="30" x2="100" y2="170"></line>
+                    </svg>
+                </div>
+            </div>
+            <div id="side-middle-bar"></div>
+            <div id="side-bottom-bar">
+                <div id="clear-button" title="Clear All History">Clear All</div>
+                <div id="help-button" title="Help">
+                    <svg width="100%" height="100%" viewBox="0 0 200 200" fill="none" stroke="white" stroke-width="10">
+                        <path d="M100 100 A30 30 0 0 0 130 70 A30 30 0 0 0 70 70" fill="none"/>
+                        <line x1="100" y1="95" x2="100" y2="130"/>                
+                        <circle cx="100" cy="150" r="3" fill="black" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    
+        <div id="cancel-button" title="Cancel">
+            <svg width="100%" height="100%" viewBox="0 0 200 200" fill="none" stroke="white" stroke-width="15">
+                <line x1="30" y1="100" x2="170" y2="100"></line>
+                <line x1="100" y1="30" x2="100" y2="170"></line>
+            </svg>
+        </div>
+    </div>
+    <script type="module" src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+</html>
